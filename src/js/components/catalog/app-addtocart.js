@@ -9,7 +9,7 @@ var AddToCart = React.createClass({
   },
   render: function() {
     return (
-      <button onClick={this.handleClick}>Add to cart</button>
+      <button className="btn btn-default" onClick={this.handleClick}>Add to cart</button>
     );
   }
 });
