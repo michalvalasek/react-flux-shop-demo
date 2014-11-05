@@ -52,6 +52,15 @@ function _addItem(item){
   }
 }
 
+function _cartTotals(){
+  var qty = 0, total = 0;
+  _cartItems.forEach(function(item){
+    qty += item.qty;
+    total += item.qty*item.cost;
+  });
+  return {'qty': qty, 'total': total};
+}
+
 var AppStore = merge(EventEmitter.prototype, {
   emitChange: function(){
     this.emit(CHANGE_EVENT);
@@ -71,6 +80,10 @@ var AppStore = merge(EventEmitter.prototype, {
 
   getCatalog: function(){
     return _catalog;
+  },
+
+  getCartTotals: function(){
+    return _cartTotals();
   },
 
   dispatcherIndex: AppDispatcher.register(function(payload){
